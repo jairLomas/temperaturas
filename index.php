@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css">
         <script src="js/jquery.mobile-1.4.5/jquery.min.js"></script>
         <script src="js/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/canvasjs/jquery.canvasjs.min.js"></script>
 
-        <script type="text/javascript" src="js/index.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css">
 
 
@@ -20,60 +20,122 @@
     <body>
 
 
-        <div data-role="page">
+
+
+        <div data-role="page" id="principal_cooler_now">
+
+            <div data-role="panel" id="mypanel" >
+                <ul data-role="listview">
+                    <li><a onclick='' data-rel="close">Principal Cooler Now</a></li>
+                    <li><a href='history.php' attribute rel="external" data-ajax="false">Principal Cooler History</a></li>
+                </ul>
+            </div>
+
             <div data-role="header">  
-                <h1>Principal Cooler</h1>
+                <a href="#mypanel" data-icon="bars">Menu</a>
+                <h1>Principal Cooler Now</h1>
             </div>
 
             <div data-role="content">   
-
-                <table style="width: 50%; margin: 0 auto;">
-                    <tr>
-                        <th align="center" width="50%">Temperatura</th>
-                        <th align="center" width="50%">Fecha</th>
-                    </tr>
-
-                    <?php
-                    
-                        $con=mysqli_connect("localhost","root","evc","Temperaturas");
-                        // Check connection
-                        if(mysqli_connect_errno()){
-                            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                        }
-
-                        $sql="SELECT * FROM temps ORDER BY created_at DESC";
-
-                        if ($result=mysqli_query($con,$sql)){
-                             // Fetch one and one row
-                            while ($row=mysqli_fetch_row($result)){
-                                
-                                echo "<tr>";
-                                echo "    <td align='center'>".$row[1]."</td>";
-                                echo "    <td align='center'>".$row[2]."</td>";
-                                echo "</tr>";
-
-                            }
-                            // Free result set
-                            mysqli_free_result($result);
-                        }
-
-                        mysqli_close($con);
-                        
-                    ?>
-
-
-                </table>
-
-
+                <div id="chartContainer" ></div>
             </div>
 
         </div>
 
-
-
+ 
 
 
     </body>
 </html>
 
 
+
+<script>
+
+$(document).ready(function(){
+
+    
+
+ 
+    var dps = []; // dataPoints
+    var chart = new CanvasJS.Chart("chartContainer",{
+        zoomEnabled: true, 
+        animationEnabled: true,
+        animationDuration: 1000,
+        title :{
+            text: "Principal Cooler"
+        },   
+        axisY:{ 
+            title: "Temperature",
+            includeZero: true,
+        },   
+        axisX:{ 
+            title: "Time",
+            includeZero: true
+        },    
+        data: [{
+            type: "line",
+            dataPoints: dps 
+        }]
+    });
+
+    var xVal = 0;
+    var yVal = 20; 
+    var updateInterval = 10000;
+    var dataLength = 30;
+    var updateChart = function (count) {
+      
+        var data = {};
+        data.dataLength = count;
+        $.ajax({
+            url: "API/getTemperatureGraph.php",
+            type: "POST",
+            data: data,
+            dataType: "JSON",
+            error: function(e){
+                console.log(e);
+            },
+            success: function(result){
+
+                for(var i = 0; i < result.data.length; i++){
+
+                    var color = "";
+                    if(parseFloat(result.data[i].temperatura) >= 10){
+                        dps.push({
+                            x: xVal,
+                            y: parseFloat(result.data[i].temperatura),
+                            label: result.data[i].fecha,
+                            color: "#FF0000"
+                        });
+                    }else{
+                        dps.push({
+                            x: xVal,
+                            y: parseFloat(result.data[i].temperatura),
+                            label: result.data[i].fecha,
+                            color: "#2E2E2E"
+                        });
+                    }
+
+
+                    xVal++;
+                }
+                console.log(dps);
+                if (dps.length > dataLength){
+                    dps.shift();                
+                }
+                
+                chart.render(); 
+
+            }
+        }); 
+
+    };
+
+    updateChart(dataLength); 
+    setInterval(function(){updateChart()}, updateInterval); 
+
+   
+
+});
+
+</script>

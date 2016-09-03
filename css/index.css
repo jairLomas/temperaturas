@@ -9,3 +9,59 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 }
+
+
+#chartContainer{
+    width: 100%;
+    height: 80vh;
+}
+
+#chartContainerHistory{
+    width: 100%;
+    height: 60vh;    
+}
+
+#history_dates{
+    width: 100%;
+    height: 20vh;      
+}
+
+.ui-panel-display-reveal{
+    box-shadow: none !important;
+}
+
+.input-form80w{
+    display: inline-block;
+ }
+
+.ui-input-text, .ui-input-search{
+    margin: .5em 1em .5em 0;
+}
+
+.ui-focus{
+    box-shadow: none !important;
+}
+
+ 
+.ui-header, .ui-footer{
+    background: #fec107 !important;
+}
+
+.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head + body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, html body .ui-group-theme-a .ui-btn:visited, html head + body .ui-btn.ui-btn-a:visited{
+    background: #4f483e !important;
+    color: white !important;
+    border-color: #4f483e !important;
+}
+
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper{
+    background: #4f483e !important;        
+}
+
+.ui-content{
+    background: #424242;
+    color: white;
+}
+
+.ui-panel-position-left.ui-panel-display-reveal, .ui-panel-open.ui-panel-position-left{
+    background: #4f483e !important;    
+}
