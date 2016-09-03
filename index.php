@@ -54,7 +54,7 @@
 
 $(document).ready(function(){
 
-    
+
 
  
     var dps = []; // dataPoints
@@ -104,14 +104,14 @@ $(document).ready(function(){
                         dps.push({
                             x: xVal,
                             y: parseFloat(result.data[i].temperatura),
-                            label: result.data[i].fecha,
+                            label: result.data[i].id,
                             color: "#FF0000"
                         });
                     }else{
                         dps.push({
                             x: xVal,
                             y: parseFloat(result.data[i].temperatura),
-                            label: result.data[i].fecha,
+                            label: result.data[i].id,
                             color: "#2E2E2E"
                         });
                     }
