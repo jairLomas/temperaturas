@@ -1,7 +1,8 @@
 <?php
     $json["data"] = "";
 
-    $con=mysqli_connect("localhost:8889","test","huo0lpaw","Temperaturas");
+    //$con=mysqli_connect("localhost:8889","test","huo0lpaw","Temperaturas");
+    $con=mysqli_connect("localhost","root","evc","Temperaturas");
     // Check connection
     if(mysqli_connect_errno()){
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
