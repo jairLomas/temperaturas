@@ -76,7 +76,7 @@
 
 var xVal = 0;
 var yVal = 20; 
-var updateInterval = 10000;
+var updateInterval = 15000;
 var dataLength = 30;
 
 $(document).ready(function(){

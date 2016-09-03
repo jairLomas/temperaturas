@@ -81,7 +81,7 @@ $(document).ready(function(){
 
     var xVal = 0;
     var yVal = 20; 
-    var updateInterval = 10000;
+    var updateInterval = 15000;
     var dataLength = 30;
     var updateChart = function (count) {
       
@@ -104,14 +104,14 @@ $(document).ready(function(){
                         dps.push({
                             x: xVal,
                             y: parseFloat(result.data[i].temperatura),
-                            label: result.data[i].id,
+                            label: result.data[i].fecha,
                             color: "#FF0000"
                         });
                     }else{
                         dps.push({
                             x: xVal,
                             y: parseFloat(result.data[i].temperatura),
-                            label: result.data[i].id,
+                            label: result.data[i].fecha,
                             color: "#2E2E2E"
                         });
                     }
