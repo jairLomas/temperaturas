@@ -8,7 +8,7 @@
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
-    $sql='SELECT * FROM temps WHERE DATE_FORMAT(created_at, "%d-%m-%Y") >= "'.$_POST["dateStart"].'" AND DATE_FORMAT(created_at, "%d-%m-%Y") <= "'.$_POST["dateEnd"].'" ORDER BY id DESC';
+    $sql='SELECT * FROM temps WHERE DATE_FORMAT(created_at, "%d-%m-%Y") >= "'.$_POST["dateStart"].'" AND DATE_FORMAT(created_at, "%d-%m-%Y") <= "'.$_POST["dateEnd"].'" GROUP BY DATE_FORMAT(created_at, "%d-%m-%Y %h:%i") ORDER BY id DESC';
 
     $data = array();
     if ($result=mysqli_query($con,$sql)){
