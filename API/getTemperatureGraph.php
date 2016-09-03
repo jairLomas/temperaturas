@@ -8,7 +8,7 @@
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
-    $sql="SELECT * FROM temps GROUP BY DATE_FORMAT(created_at, '%d-%m-%Y %h:%i') ORDER BY id DESC LIMIT ".($_POST["dataLength"]+1)." ";
+    $sql="SELECT * FROM temps ORDER BY id DESC LIMIT ".($_POST["dataLength"]+1)." ";
 
     $data = array();
     if ($result=mysqli_query($con,$sql)){
