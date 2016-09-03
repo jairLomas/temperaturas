@@ -17,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
 
 
-        <title>VazquezElectronics</title>
+        <title>Freezer Los Primos</title>
     </head>
     <body>
 
@@ -28,14 +28,14 @@
 
             <div data-role="panel" id="mypanel" >
                 <ul data-role="listview">
-                    <li><a href='index.php' data-role="none" attribute rel="external" data-ajax="false">Principal Cooler Now</a></li>
-                    <li><a onclick='' data-rel="close">Principal Cooler History</a></li>
+                    <li><a href='index.php' data-role="none" attribute rel="external" data-ajax="false">Freezer Los Primos Now</a></li>
+                    <li><a onclick='' data-rel="close">Freezer Los Primos History</a></li>
                 </ul>
             </div>
 
             <div data-role="header">  
                 <a href="#mypanel" data-icon="bars">Menu</a>
-                <h1>Principal Cooler History</h1>
+                <h1>Freezer Los Primos History</h1>
             </div>
 
             <div data-role="content">   
@@ -132,7 +132,6 @@ $(document).ready(function(){
                     animationEnabled: true,
                     animationDuration: 1000,
                     title :{
-                        text: "Principal Cooler"
                     },   
                     axisY:{ 
                         title: "Temperature",
