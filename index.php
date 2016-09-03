@@ -81,7 +81,7 @@ $(document).ready(function(){
 
     var xVal = 0;
     var yVal = 20; 
-    var updateInterval = 15000;
+    var updateInterval = 60 * 1000;
     var dataLength = 30;
     var updateChart = function (count) {
       
