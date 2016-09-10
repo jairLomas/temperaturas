@@ -16,9 +16,12 @@
     if ($result=mysqli_query($con,$sql)){
 
         $row=mysqli_fetch_row($result);
-
-        $json["message"] = "Warning: The Freezer is ".$row[1]."F at ".date("d-F-Y H:i", strtotime($row[2]));
-        $json["error"] = false;
+        if($row[1] <= 10){
+            $json["message"] = "Warning: The Freezer is ".$row[1]."F at ".date("d-F-Y H:i", strtotime($row[2]));
+            $json["error"] = false;
+        }else{
+            $json["error"] = true; 
+        }
 
         mysqli_free_result($result);
     }else{
