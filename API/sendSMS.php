@@ -16,7 +16,7 @@
     if ($result=mysqli_query($con,$sql)){
 
         $row=mysqli_fetch_row($result);
-        if($row[1] <= 10){
+        if( $row[1] <= 10){
             $json["message"] = "Warning: The Freezer is ".$row[1]."F at ".date("d-F-Y H:i", strtotime($row[2]));
             $json["error"] = false;
         }else{
@@ -34,8 +34,8 @@
  
     if( !$json["error"] ){
 
-        echo "Envia SMS<br>";
-        echo $json["message"];
+        //echo "Envia SMS<br>";
+        //echo $json["message"];
 
         $key = "72fb3ca6-e344-4cf3-90c8-95b6a204e411";    
         $secret = "yRuhJHk4P0Gj0cAY1JnN+g==";
