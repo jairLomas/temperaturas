@@ -99,7 +99,7 @@ $(document).ready(function(){
                 for(var i = 0; i < result.data.length; i++){
 
                     var color = "";
-                    if(parseFloat(result.data[i].temperatura) >= 10){
+                    if(parseFloat(result.data[i].temperatura) >= 0){
                         dps.push({
                             x: xVal,
                             y: parseFloat(result.data[i].temperatura),
